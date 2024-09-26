@@ -1,29 +1,31 @@
-const starGameButton = document.querySelector(".start-quiz button")
+const $starGameButton = document.querySelector(".start-quiz button")
 const questionsContainer = document.querySelector("question-container")
 const answersContainer = document.querySelector("answers-container")
-const questionText = document.querySelector(".question")
+//const questionText = document.querySelector(".question")
 
 starGameButton.addEventListener("click", starGame)
 
-let currentQuestionIndex = 0
+//let currentQuestionIndex = 0
 
 
 
 
 function starGame(){
-    starGameButton.classList.add("hide")
-    questionsContainer.classList.remove("hide")
+    //não está sendo usado
+   /*starGameButton.classList.add("hide")
+    questionsContainer.classList.remove("hide")*/
     displayNextQuestion()
 }
-
+//deveria remover as perguntas de exemplo 23:40
 function displayNextQuestion(){
-    while(answersContainer.firstChild) {
-        answersContainer.removeChild(answersContainer.firstChild)
+    while($answersContainer.firstChild) {
+        $answersContainer.removeChild($answersContainer.firstChild)
     }
 }
 
-    questionText.textContent = question[currentQuestionIndex].question
-
+   /* questionText.textContent = question[currentQuestionIndex].question
+*/
+/*
 const question = [
 {
     question: "Qual das seguintes tags HTML é usada para criar um link?",
@@ -42,4 +44,4 @@ const question = [
     { text: "Netscape Navigator", correct: true}
 }
 
-]
+]*/
