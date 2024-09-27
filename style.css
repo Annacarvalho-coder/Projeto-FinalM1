@@ -1,63 +1,84 @@
-
-.button {
-  display: inline-block;
-  padding: .75rem 1.25rem;
-  border-radius: 10rem;
-  color: #e4cf12;
-  text-transform: uppercase;
-  font-size: 1rem;
-  letter-spacing: .15rem;
-  transition: all .3s;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  &:after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgb(122, 152, 206);
-    border-radius: 10rem;
-    z-index: -2;
-  }
-  &:before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0%;
-    height: 100%;
-    background-color: darken(rgb(0, 140, 255), 15%);
-    transition: all .3s;
-    border-radius: 10rem;
-    z-index: -1;
-  }
-  &:hover {
-    color: #902994;
-    filter: brightness(0.8);
-    &:before {
-      width: 100%;
-    }
-  }
-}
-
 * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
   font-family: Arial;
   text-decoration: none;
   font-size: 20px;
 }
 
+button {
+  cursor: pointer;
+  /* &:hover {
+    color: #902994;
+    filter: brightness(0.8);
+  } */
+}
+
 body {
   background-color: #030303;
-  color:#fff
+  color:#fff;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 .container {
   padding-top: 50px;
-  margin: 0 auto;
+  width: 90%;
+  max-width: 800px;
+
+  border: 2px solid #fff;
+  border-radius: 6px;
+  padding: 16px;
+  box-shadow: 0 0 2px 2px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.questions-container {
   width: 100%;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.question {
+   font-size: 24px;
+   font-weight: bold;
+   text-align: center;
+}
+
+.answers-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.next-question {
+  margin-top: 32px;
+}
+
+.button {
+  background-color: #4862f7;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border: 0;
+  border-radius: 6px;
+  height: 48px;
+  padding: 0 32px;
+  transition: fiter 0.2s;
+  &:hover {
+    filter: brightness(0.8);
+  }
 }
 
 h1 {
@@ -66,7 +87,7 @@ h1 {
   margin-bottom: 2rem;
   color: #aa77ac;
 }
-
-/*.hide{
+ 
+.hide{
     display: none;
-}*/
+}
