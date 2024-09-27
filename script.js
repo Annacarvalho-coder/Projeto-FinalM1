@@ -1,47 +1,69 @@
-const $starGameButton = document.querySelector(".start-quiz button")
-const questionsContainer = document.querySelector("question-container")
-const answersContainer = document.querySelector("answers-container")
-//const questionText = document.querySelector(".question")
+const startGameButton = document.querySelector(".start-quiz");
+const questionsContainer = document.querySelector(".questions-container");
+const title = document.querySelector(".title");
+const answersContainer = document.querySelector(".answers-container");
+const questionText = document.querySelector(".question")
 
-starGameButton.addEventListener("click", starGame)
+//Evento de Click para começar o Quiz
+startGameButton.addEventListener("click", startGame);
 
-//let currentQuestionIndex = 0
+//Pergunta atual
+let currentQuestionIndex = 0
 
-
-
-
-function starGame(){
-    //não está sendo usado
-   /*starGameButton.classList.add("hide")
-    questionsContainer.classList.remove("hide")*/
-    displayNextQuestion()
+//Começar o Quiz
+function startGame() {
+  //não está sendo usado
+  startGameButton.classList.add("hide");
+  title.classList.add("hide");
+  questionsContainer.classList.remove("hide");
+  displayNextQuestion();
 }
-//deveria remover as perguntas de exemplo 23:40
+
+//Remover elementos filhos do answer-container
 function displayNextQuestion(){
-    while($answersContainer.firstChild) {
-        $answersContainer.removeChild($answersContainer.firstChild)
+    while(answersContainer.firstChild) {
+        answersContainer.removeChild( answersContainer.firstChild);
     }
+
+    //Mostrar pergutas e respostas
+    questionText.textContent = questions[currentQuestionIndex].question;
+    questions[currentQuestionIndex].answers.forEach(answer => {
+        const newAnswer = document.createElement("button");
+        newAnswer.classList.add("answer", "button");
+        newAnswer.textContent = answer.text;
+        
+        //Verificar se a resposta é a correta
+        if(answer.correct) {
+            newAnswer.dataset.correct = answer.correct;
+        }
+
+        //Adicionar botões das respostas
+        answersContainer.appendChild(newAnswer);
+
+    });
 }
 
-   /* questionText.textContent = question[currentQuestionIndex].question
-*/
-/*
-const question = [
-{
+
+
+const questions = [
+  {
     question: "Qual das seguintes tags HTML é usada para criar um link?",
     answers: [
-        { text: "<div>", correct: false},
-        { text: "<img>", correct: false},
-        { text: "<a>", correct: true},
-        { text: "<p>", correct: false}
-    ]
-},
+      { text: "<div>", correct: false },
+      { text: "<img>", correct: false },
+      { text: "<a>", correct: true },
+      { text: "<p>", correct: false },
+    ],
+  },
 
-{   question: "Qual foi o primeiro navegador web a suportar a linguagem JavaScript?",
-    { text: "Internet Explorer", correct: false},
-    { text: "Mozilla Firefox", correct: false},
-    { text: "Google Chrome", correct: false},
-    { text: "Netscape Navigator", correct: true}
-}
-
-]*/
+  {
+    question:
+      "Qual foi o primeiro navegador web a suportar a linguagem JavaScript?",
+    answers: [
+      { text: "Internet Explorer", correct: false },
+      { text: "Mozilla Firefox", correct: false },
+      { text: "Google Chrome", correct: false },
+      { text: "Netscape Navigator", correct: true },
+    ],
+  },
+];
