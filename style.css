@@ -8,7 +8,11 @@
 }
 
 body {
-  background-color: #030303;
+  background-color: #1f0220;
+  background-image: url('./img/código_roxo.jpg'); /* Trocar por uma sem a logo, acaba encobrindo o efeito de errar e acertar no fundo, testem e vejam se fica assim ou o efeito no fundo é melhor*/
+  background-size: cover; /* Faz a imagem cobrir toda a tela */
+  background-position: center; /* Centraliza a imagem */
+  background-repeat: no-repeat; /* Evita que a imagem se repita */
   color:#fff;
   height: 100vh;
   display: flex;
@@ -20,13 +24,13 @@ h1 {
   text-transform: uppercase;
   font-size: .8rem;
   margin-bottom: 2rem;
-  color: #aa77ac;
+  color: #FFD700;
 }
 
 .container {
   width: 90%;
   max-width: 800px;
-  background-color: #1f0220;
+  background-color: #330335;
   border: 2px solid #fff;
   border-radius: 6px;
   padding: 16px;
@@ -66,7 +70,7 @@ h1 {
 }
 
 .button {
-  background-color: #4862f7;
+  background-color: #4353ada2;
   color: #fff;
   font-size: 16px;
   font-weight: bold;
@@ -80,11 +84,21 @@ h1 {
 
 .button:not(:disabled):hover {
   filter: brightness(0.8);
-  color: #902994;
+  color: #FFD700;
 }
 
 .answer:disabled {
   cursor: not-allowed;
+}
+
+.final-message {
+  font: size 20px;
+  text-align: center;
+}
+
+.final-message span{
+  display: block;
+  margin-top: 8px;;
 }
 
 .hide{

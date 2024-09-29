@@ -8,8 +8,9 @@ const nextQuestionButton = document.querySelector(".next-question");
 //Evento de Click para começar o Quiz e próxima pergunta
 startGameButton.addEventListener("click", startGame);
 nextQuestionButton.addEventListener("click", displayNextQuestion);
-//Pergunta atual
+//Pergunta atual e percentual de acertos
 let currentQuestionIndex = 0
+let totalCorrect = 0
 
 //Começar o Quiz
 function startGame() {
@@ -23,6 +24,11 @@ function startGame() {
 //Remover elementos filhos do answer-container
 function displayNextQuestion(){
   resetState();
+
+  if(questions.length == currentQuestionIndex) {
+    return finishGame();
+  }
+
     //Mostrar pergutas e respostas
     questionText.textContent = questions[currentQuestionIndex].question;
     questions[currentQuestionIndex].answers.forEach(answer => {
@@ -52,14 +58,18 @@ document.body.removeAttribute("class");
 nextQuestionButton.classList.add("hide");
 
 }
-
+//100% ou nada!
 function selectAnswer(event){
   const answerClicked = event.target;
-
+//acertou vai a próxima fase
   if (answerClicked.dataset.correct) {
     document.body.classList.add("correct");
+    totalCorrect++
   } else {
+    //errou volta do iníco, retira o botão de próxima
     document.body.classList.add("incorrect");
+    finishGame(); 
+    button.disabled = true;
   }
 
 document.querySelectorAll(".answer").forEach(button => {
@@ -77,11 +87,44 @@ currentQuestionIndex++
 
 }
 
+//Ao final das fases e/ou ao errar
+function finishGame() {
+  const totalQuestion = questions.length
+  const performance = Math.floor(totalCorrect * 100 / totalQuestion)
+
+  let message = ""
+
+  switch (true) {
+    case (performance >= 90):
+      message = "Excelente! :)"
+      break
+    case (performance >= 70):
+      message = "Muito bom :)"
+      break
+    case (performance >= 50):
+      message = "Bom"
+      break
+    default:
+      message = "Pode melhorar :("
+  }
+
+  questionsContainer.innerHTML =
+  `
+  <p class="final-message">
+    Você passou ${totalCorrect} de ${totalQuestion} fases!
+    <span>Resultado: ${message}</span>
+  </p>
+  <button onclick=window.location.reload() class="button">
+    Refazer quiz
+  </button>
+  `
+}
 
 
+//FASES (5)
 const questions = [
   {
-    question: "Qual das seguintes tags HTML é usada para criar um link?",
+    question: "FASE 1: Qual das seguintes tags HTML é usada para criar um link?",
     answers: [
       { text: "<div>", correct: false },
       { text: "<img>", correct: false },
@@ -92,7 +135,7 @@ const questions = [
 
   {
     question:
-      "Qual foi o primeiro navegador web a suportar a linguagem JavaScript?",
+      "FASE 2: Qual foi o primeiro navegador web a suportar a linguagem JavaScript?",
     answers: [
       { text: "Internet Explorer", correct: false },
       { text: "Mozilla Firefox", correct: false },
@@ -100,4 +143,35 @@ const questions = [
       { text: "Netscape Navigator", correct: true },
     ],
   },
+  {
+    question:
+      "FASE 3:Em que ano foi lançado o primeiro site?",
+    answers: [
+      { text: "1990", correct: false },
+      { text: "1991", correct: true },
+      { text: "1970", correct: false },
+      { text: "1995", correct: false },
+    ],
+  },
+  {
+    question:
+      "FASE 4: Qual foi a inspiração para a utilização do termo 'bug' para descrever erros em programas de computador?",
+    answers: [
+      { text: "Um problema em um circuito lógico", correct: false },
+      { text: "Uma referência à Segunda Guerra Mundial", correct: false },
+      { text: "Um inseto encontrado em um dos primeiros computadores", correct: true },
+      { text: "Uma homenagem a um pioneiro da computação", correct: false },
+    ],
+  },
+  {
+    question:
+      "FASE 5: Qual protocolo é utilizado para transferir páginas web?",
+    answers: [
+      { text: "HTTP", correct: true },
+      { text: "TCP", correct: false },
+      { text: "FTP", correct: false },
+      { text: "SMTP", correct: false },
+    ],
+  }
+
 ];
