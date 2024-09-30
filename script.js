@@ -181,6 +181,28 @@ const questions = [
       { text: "FTP", correct: false },
       { text: "SMTP", correct: false },
     ],
+  },
+  {
+    question:
+      "FASE 6: Diferença entre hoisting de var, let e const?",
+    answers: [
+      { text: "var tem um comportamento mais permissivo, enquanto let e const introduzem regras mais rígidas para evitar erros comuns.", correct: true },
+      { text: "O hoisting só ocorre com a palavra-chave var, sendo inexistente em let e const.", correct: false },
+      { text: "O hoisting garante que todas as variáveis sejam inicializadas com o valor undefined.", correct: false },
+      { text: "Nenhuma, apresenta a mesma função!", correct: false },
+    ],
+  },
+  {
+    question:
+      "FASE 7: O que é a propriedade flex-flow?",
+    answers: [
+      { text: "Flex-flow é uma propriedade que combina as propriedades flex-direction e flex-wrap em um contêiner flexível. ", correct: true },
+      { text: "Flex-flow é uma propriedade que define a cor de fundo de um contêiner flexível.", correct: false },
+      { text: "Flex-flow controla a opacidade dos elementos dentro de um contêiner flexível.", correct: false },
+      { text: "Flex-flow é responsável por aplicar animações a elementos em um layout flexível.", correct: false },
+    ],
   }
+
+
 
 ];
