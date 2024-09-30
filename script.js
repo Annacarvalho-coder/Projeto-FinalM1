@@ -11,6 +11,15 @@ nextQuestionButton.addEventListener("click", displayNextQuestion);
 //Pergunta atual e percentual de acertos
 let currentQuestionIndex = 0
 let totalCorrect = 0
+//let nome = prompt("Qual seu nome? ")
+let nome;
+
+while (!nome) {
+    nome = prompt("Qual seu nome? (não pode estar vazio)");
+    if (!nome) {
+        alert("Por favor, digite um nome válido.");
+    }
+}
 
 //Começar o Quiz
 function startGame() {
@@ -111,9 +120,9 @@ function finishGame() {
   questionsContainer.innerHTML =
   `
   <p class="final-message">
-    Você passou ${totalCorrect} de ${totalQuestion} fases!
+    Você passou ${totalCorrect} de ${totalQuestion} fases, ${nome}!
     <span>Resultado: ${message}</span>
-  </p>
+</p>
   <button onclick=window.location.reload() class="button">
     Refazer quiz
   </button>

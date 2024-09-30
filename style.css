@@ -9,10 +9,6 @@
 
 body {
   background-color: #1f0220;
-  background-image: url('./img/código_roxo.jpg'); /* Trocar por uma sem a logo, acaba encobrindo o efeito de errar e acertar no fundo, testem e vejam se fica assim ou o efeito no fundo é melhor*/
-  background-size: cover; /* Faz a imagem cobrir toda a tela */
-  background-position: center; /* Centraliza a imagem */
-  background-repeat: no-repeat; /* Evita que a imagem se repita */
   color:#fff;
   height: 100vh;
   display: flex;
