@@ -186,7 +186,7 @@ const questions = [
     question:
       "FASE 6: Diferença entre hoisting de var, let e const?",
     answers: [
-      { text: "var tem um comportamento mais permissivo, enquanto let e const introduzem regras mais rígidas para evitar erros comuns.", correct: true },
+      { text: "var tem um comportamento mais permissivo, enquanto let e const tem regras rígidas para evitar erros comuns.", correct: true },
       { text: "O hoisting só ocorre com a palavra-chave var, sendo inexistente em let e const.", correct: false },
       { text: "O hoisting garante que todas as variáveis sejam inicializadas com o valor undefined.", correct: false },
       { text: "Nenhuma, apresenta a mesma função!", correct: false },
