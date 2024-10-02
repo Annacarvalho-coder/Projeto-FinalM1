@@ -5,13 +5,11 @@ const answersContainer = document.querySelector(".answers-container");
 const questionText = document.querySelector(".question");
 const nextQuestionButton = document.querySelector(".next-question");
 
-//Evento de Click para começar o Quiz e próxima pergunta
 startGameButton.addEventListener("click", startGame);
 nextQuestionButton.addEventListener("click", displayNextQuestion);
-//Pergunta atual e percentual de acertos
+
 let currentQuestionIndex = 0
 let totalCorrect = 0
-//let nome = prompt("Qual seu nome? ")
 let nome;
 
 while (!nome) {
@@ -21,16 +19,13 @@ while (!nome) {
     }
 }
 
-//Começar o Quiz
 function startGame() {
-  //não está sendo usado
   startGameButton.classList.add("hide");
   title.classList.add("hide");
   questionsContainer.classList.remove("hide");
   displayNextQuestion();
 }
 
-//Remover elementos filhos do answer-container
 function displayNextQuestion(){
   resetState();
 
@@ -38,19 +33,16 @@ function displayNextQuestion(){
     return finishGame();
   }
 
-    //Mostrar pergutas e respostas
     questionText.textContent = questions[currentQuestionIndex].question;
     questions[currentQuestionIndex].answers.forEach(answer => {
         const newAnswer = document.createElement("button");
         newAnswer.classList.add("answer", "button");
         newAnswer.textContent = answer.text;
         
-        //Verificar se a resposta é a correta
         if(answer.correct) {
             newAnswer.dataset.correct = answer.correct;
         }
 
-        //Adicionar botões das respostas
         answersContainer.appendChild(newAnswer);
 
         newAnswer.addEventListener("click", selectAnswer);
@@ -67,15 +59,15 @@ document.body.removeAttribute("class");
 nextQuestionButton.classList.add("hide");
 
 }
-//100% ou nada!
+
 function selectAnswer(event){
   const answerClicked = event.target;
-//acertou vai a próxima fase
+
   if (answerClicked.dataset.correct) {
     document.body.classList.add("correct");
     totalCorrect++
   } else {
-    //errou volta do iníco, retira o botão de próxima
+    
     document.body.classList.add("incorrect");
     finishGame(); 
     button.disabled = true;
@@ -96,7 +88,6 @@ currentQuestionIndex++
 
 }
 
-//Ao final das fases e/ou ao errar
 function finishGame() {
   const totalQuestion = questions.length
   const performance = Math.floor(totalCorrect * 100 / totalQuestion)
@@ -105,16 +96,16 @@ function finishGame() {
 
   switch (true) {
     case (performance >= 90):
-      message = "Excelente! :)"
+      message = "Excelente!"
       break
     case (performance >= 70):
-      message = "Muito bom :)"
+      message = "Muito bom!"
       break
     case (performance >= 50):
-      message = "Bom"
+      message = "Bom!"
       break
     default:
-      message = "Pode melhorar :("
+      message = "Pode melhorar!"
   }
 
   questionsContainer.innerHTML =
@@ -122,6 +113,7 @@ function finishGame() {
   <p class="final-message">
     Você passou ${totalCorrect} de ${totalQuestion} fases, ${nome}!
     <span>Resultado: ${message}</span>
+    <p id="smile">🚀 🙂</p>
 </p>
   <button onclick=window.location.reload() class="button">
     Refazer quiz
@@ -130,7 +122,7 @@ function finishGame() {
 }
 
 
-//FASES (5)
+
 const questions = [
   {
     question: "FASE 1: Qual das seguintes tags HTML é usada para criar um link?",
@@ -154,7 +146,7 @@ const questions = [
   },
   {
     question:
-      "FASE 3:Em que ano foi lançado o primeiro site?",
+      "FASE 3: Em que ano foi lançado o primeiro site?",
     answers: [
       { text: "1990", correct: false },
       { text: "1991", correct: true },
@@ -202,7 +194,4 @@ const questions = [
       { text: "Flex-flow é responsável por aplicar animações a elementos em um layout flexível.", correct: false },
     ],
   }
-
-
-
 ];
