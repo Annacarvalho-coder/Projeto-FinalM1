@@ -105,7 +105,8 @@ h1 {
 }
 
 .correct {
-  background-color: #A9D39E;
+  /* #A9D39E */
+  background-color: #95E06C;
   animation: neon 1.5s infinite alternate;
 }
 
