@@ -113,23 +113,6 @@ h1 {
   background-color: #E83F49;
 }
 
-
-@media screen and (max-width: 63.75rem) { 
-  .container {
-    padding: 0.5rem; 
-  }
-
-  .question {
-    font-size: 1.125rem; 
-  }
-
-  .button {
-    font-size: 1rem; 
-    height: 4.875rem;
-    border-radius: 3.125rem; 
-  }
-}
-
 @keyframes neon {
   0%, 100% {
     box-shadow: 
@@ -149,4 +132,20 @@ h1 {
 
 #smile {
   font-size: 2rem;
+}
+
+@media screen and (max-width: 63.75rem) { 
+  .container {
+    padding: 0.5rem; 
+  }
+
+  .question {
+    font-size: 1.125rem; 
+  }
+
+  .button {
+    font-size: 0.6rem; 
+    height: 2.8rem;
+    border-radius: 3.125rem; 
+  }
 }
