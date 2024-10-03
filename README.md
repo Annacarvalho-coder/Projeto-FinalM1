@@ -94,16 +94,21 @@ function displayNextQuestion() {
   });
 }
 ```
-### Resetar Estado
+### Perguntas
 ```
-function resetState() {
-  while (answersContainer.firstChild) {
-    answersContainer.removeChild(answersContainer.firstChild);
-  }
-
-  document.body.removeAttribute("class");
-  nextQuestionButton.classList.add("hide");
+const questions = [
+  {
+    question: "FASE 1: Qual das seguintes tags HTML é usada para criar um link?",
+    answers: [
+      { text: "<div>", correct: false },
+      { text: "<img>", correct: false },
+      { text: "<a>", correct: true },
+      { text: "<p>", correct: false },
+    ],
+  },
+  ...2,3,4,5,6 e 7...
 }
+]
 ```
 ### Seleção de Resposta
 ```
@@ -131,6 +136,17 @@ function selectAnswer(event) {
 
   nextQuestionButton.classList.remove("hide");
   currentQuestionIndex++;
+}
+```
+### Resetar Estado
+```
+function resetState() {
+  while (answersContainer.firstChild) {
+    answersContainer.removeChild(answersContainer.firstChild);
+  }
+
+  document.body.removeAttribute("class");
+  nextQuestionButton.classList.add("hide");
 }
 ```
 ### Finalização do Jogo
@@ -167,23 +183,6 @@ function finishGame() {
   `;
 }
 ```
-### Perguntas
-```
-const questions = [
-  {
-    question: "FASE 1: Qual das seguintes tags HTML é usada para criar um link?",
-    answers: [
-      { text: "<div>", correct: false },
-      { text: "<img>", correct: false },
-      { text: "<a>", correct: true },
-      { text: "<p>", correct: false },
-    ],
-  },
-  ...2,3,4,5,6 e 7...
-}
-]
-```
-
 ## Html
 
 ```
